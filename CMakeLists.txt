@@ -11,11 +11,8 @@ IF(APPLE)
 ENDIF()
 
 ###########################################################################
-# Find GTSAM
-find_package(GTSAM REQUIRED)
-if (NOT GTSAM_FOUND)
-  message(FATAL_ERROR "This program requires the GTSAM library.")
-endif(NOT GTSAM_FOUND)
+
+include(gtsam)
 
 ###########################################################################
 # Find Boost
@@ -52,9 +49,8 @@ target_link_libraries(KimeraRPGO
 target_include_directories(KimeraRPGO
   PUBLIC
     ${GTSAM_INCLUDE_DIR}
-    # ${CMAKE_CURRENT_SOURCE_DIR}/gtsam
 )
-
+  add_dependencies(KimeraRPGO gtsam)
 ###########################################################################
 # Define executables
 add_executable(RpgoReadG2o examples/RpgoReadG2o.cpp)
