@@ -44,6 +44,7 @@ target_link_libraries(KimeraRPGO
     Boost::boost
     gtsam
     gtsam_unstable
+    pthread
 )
 
 target_include_directories(KimeraRPGO
